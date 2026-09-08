@@ -1,6 +1,15 @@
 h1{
-    color: rgb(251, 251, 251);
-    background-color: rgb(46, 43, 128);
+    margin: 0;
+    color: white;
     text-align: center;
     font-size: 50px;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.top-banner{
+    background-color: rgb(46, 43, 128);
+    height: 100px;
+    width: 100%;
 }

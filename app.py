@@ -38,3 +38,16 @@ def login():
             return render_template ('index.html')
         else:
             return render_template ('login.html', invalid = 'Username or password incorrect.')
+
+@app.route('/index.html')
+def details():
+    db = sqlite3.connect("bank.db")
+    cursor = db.cursor()
+    results_display= []
+    sql = (f"""SELECT *
+            from details
+            """)
+    cursor.execute(sql)
+    details = cursor.fetchall()
+    results_display.append(details)
+    return render_template('details.html', customers = results_display)

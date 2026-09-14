@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/details.css') }}">
+</head>
+{% if customers %}
+  <h1>These are all of the customers.</h1>
+  <h2>To find out more about a customer click on their name.</h2>
+{%endif%}
+</html>

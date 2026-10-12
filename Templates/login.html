@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+ <meta charset="UTF-8">
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 </head>
 
+
 <form method="POST">
-    <label for="username">Employee Name:</label>
-    <input type="text" id="username" name="employee_name" required>
-    <br>
-    <label for="password">Password:</label>
-    <input type="text" id="password" name="password" required>
-    <br>
-    <button type="submit">Submit</button>
+   <label for="username">Employee Name:</label>
+   <input type="text" id="username" name="employee_name" required>
+   <br>
+   <label for="password">Password:</label>
+   <input type="text" id="password" name="password" required>
+   <br>
+   <button type="submit">Submit</button>
 </form>
 <body>
-    {%if invalid == 'Username or password incorrect.'%}
-        <p>{{invalid}}</p>
-    {%endif%}
+   {%if invalid == 'Username or password incorrect.'%}
+       <p>{{invalid}}</p>
+   {%endif%}
 </body>
+

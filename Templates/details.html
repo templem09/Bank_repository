@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/details.css') }}">
+</head>
+<div class="top-banner">
+{% if customers %}
+  <h1>These are all of the customers.</h1>
+  <h2>To find out more about a customer click on their name.</h2>
+  <a href="{{url_for('home')}}">
+  <button class="top-corner-btn">Home</button>
+  </a>
+  <a href="{{url_for('details')}}">
+  <div><button type="button">Details</button></div>
+  </a>
+  <a href="{{url_for('accounts')}}">
+  <div><button type="button">Accounts</button></div>
+  </a>
+  <div>Loans</div>
+{%endif%}
+</div>
+<table border="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer Name</th>
+                <th>Birthday</th>
+            </tr>
+        </thead>
+{% for customer in customers %}
+  <tr>
+    <td>{{ customer[0] }}</td>
+    <td>
+    <a href="{{ url_for('customer', customer_id=customer[0], bridge_id=0, bridge_table = 'N_A')}}">
+      {{ customer[1] }}
+    </a>
+    </td>
+    <td>{{ customer[2] }}</td>
+  </tr>
+  {%endfor%}
+</table>
+</html>

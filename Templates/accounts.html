@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/details.css') }}">
+</head>
+<div class="top-banner">
+{% if accounts %}
+ <h1>These are all of the accounts.</h1>
+ <h2>To find out more about an account click on the name.</h2>
+ <a href="{{url_for('home')}}">
+ <button class="top-corner-btn">Home</button>
+ </a>
+ <a href="{{url_for('details')}}">
+ <div><button type="button">Details</button></div>
+ </a>
+ <a href="{{url_for('accounts')}}">
+ <div><button type="button">Accounts</button></div>
+ </a>
+ <div>Loans</div>
+{%endif%}
+</div>
+<table border="0">
+       <thead>
+           <tr>
+               <th>ID</th>
+               <th>Account Name</th>
+           </tr>
+       </thead>
+{% for account in accounts %}
+ <tr>
+   <td>{{ account[0] }}</td>
+   <td>
+   <a href="{{ url_for('account_info', account_id=account[0])}}">
+     {{ account[1] }}
+   </a>
+   </td>
+ </tr>
+ {%endfor%}
+</table>
+</html>
+

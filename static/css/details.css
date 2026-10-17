@@ -1,0 +1,44 @@
+h1{
+    margin: 0;
+    font-size: 40px;
+    color: white;
+    text-align: center;
+}
+h2{
+    font-size: 17px;
+    color: white;
+    text-align: center;
+}
+.top-banner{
+    background-color: rgb(46, 43, 128);
+    height: 120px;
+    width: 100%;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+th, td {
+    padding: 15px 30px;
+    text-align: left;
+}
+
+div{
+    display: inline-block;
+    color: white;
+    width: 70px;
+    height: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.top-corner-btn {
+    position: fixed;
+    top: 10px;   
+    right: 10px; 
+    z-index: 1000; 
+    }

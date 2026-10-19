@@ -91,12 +91,6 @@ def customer(customer_id, bridge_id, bridge_table):
   return render_template('customer.html', customer=results_display, list_length=list_length)
 
 
-
-
-
-
-
-
 @app.route('/accounts.html')
 def accounts():
  db = sqlite3.connect("bank.db")
@@ -109,8 +103,6 @@ def accounts():
  accounts = cursor.fetchall()
  results_display.append(accounts)
  return render_template('accounts.html', accounts=results_display[0])
-
-
 
 
 @app.route('/account_info.html/<int:account_id>')
@@ -140,3 +132,32 @@ def account_info(account_id):
   details = cursor.fetchall()
   type_display.append(details)
   return render_template('account_info.html', account=account_display[0], account_type = type_display[0])
+
+
+
+@app.route('/loans.html')
+def loans():
+ db = sqlite3.connect("bank.db")
+ cursor = db.cursor()
+ results_display= []
+ sql = (f"""SELECT loan_id, loan_reason
+         from loans
+         """)
+ cursor.execute(sql)
+ loans = cursor.fetchall()
+ results_display.append(loans)
+ return render_template('loans.html', loans=results_display[0])
+
+@app.route('/loan_info.html/<int:loan_id>')
+def loan_info(loan_id):
+  db = sqlite3.connect("bank.db")
+  cursor = db.cursor()
+  loan_display= []
+  sql = (f"""SELECT *
+              from loans
+              WHERE loan_id = {loan_id}
+              """)
+  cursor.execute(sql)
+  details = cursor.fetchall()
+  loan_display.append(details)
+  return render_template('loan_info.html', loan=loan_display[0])

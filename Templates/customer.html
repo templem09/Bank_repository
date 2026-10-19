@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
 </head>
 <div class="top-banner">
-    <h1>This is the information about {{ customer[0][1] }}</h1>
-    <a href="{{url_for('home')}}">
-    <button class="top-corner-btn">Home</button>
+    {% if list_length == '1' %}
+        <h1>This is the information about {{ customer[0][0][1] }}</h1>
+    {%else%}
+      <h1>This is the information about {{ customer[0][0][1] }} & {{ customer[1][0][1] }}</h1>
+    {%endif%}
+   <a href="{{url_for('home')}}">
+   <button class="top-corner-btn">Home</button>
+   </a>
+   <a href="{{url_for('details')}}">
+    <div><button type="button">Details</button></div>
     </a>
+    <a href="{{url_for('accounts')}}">
+    <div><button type="button">Accounts</button></div>
+    </a>
+    <a href="{{url_for('loans')}}">
+  <div><button type="button">Loans</button></div>
+  </a>
 </div>
 <body>
-   {% for item in customer %}
-        <p>ID: {{ item[0] }}</p>
-        <p>Name: {{ item[1] }}</p>
-        <p>Birthday: {{ item[2] }}</p>
-        <p>Email: {{ item[3] }}</p>
-        <p>Phone Number: {{ item[4] }}</p>
-        <p>ID Photo:</p>
-        <img src="../static/images/{{ item[0] }}.png" alt="ID Photo">
-   {% endfor %}
-</body>    
-
+  <script>
+   a=0
+  </script>
+  {% for item in customer %}
+    <p>ID: {{ item[0][0] }}</p>
+    <p>Name: {{ item[0][1] }}</p>
+    <p>Birthday: {{ item[0][2] }}</p>
+    <p>Email: {{ item[0][3] }}</p>
+    <p>Phone Number: {{ item[0][4] }}</p>
+    <p>ID Photo:</p>
+    <img src="{{ url_for('static', filename='images/' ~ item[0][0] ~ '.png') }}"  alt="ID Photo">
+    <script>
+    a=a+1
+    </script>
+  {% endfor %}
+</body>  

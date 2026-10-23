@@ -5,13 +5,13 @@ h1{
     text-align: center;
 }
 h2{
-    font-size: 17px;
+    font-size: 25px;
     color: white;
     text-align: center;
 }
 .top-banner{
     background-color: rgb(46, 43, 128);
-    height: 120px;
+    height: 150px;
     width: 100%;
 }
 body{

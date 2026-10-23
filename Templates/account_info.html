@@ -5,8 +5,19 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
 </head>
 <div class="top-banner">
-   <h1>This is the information about the account {{ account[0][1] }}</h1>
-   <h2>To find out information about the owner(s) of this account click on their name</h2>
+ 
+    {% if list_length == '1' %}
+      <h1>This is the information about the account {{ account[0][0][1] }}</h1>
+      <h2>To find out information about the owner(s) of this account click on their name</h2>
+    {% else %}
+      <h1>This is the information about the accounts {{ account[0][0][1] }}
+      {% for item in range(2, run, 2) %}
+        |
+        {{ account[item][0][1] }}
+      {%endfor%}
+      </h1>
+    {%endif%}
+  <h2>To find out information about the owner of this loan click on the loan purpose</h2>
    <a href="{{url_for('home')}}">
    <button class="top-corner-btn">Home</button>
    </a>
@@ -21,18 +32,16 @@
   </a>
 </div>
 <body>
-  {% for item in account %}
-       <p>Account ID: {{ item [0] }}</p>
-        <p><a href="{{ url_for('customer', customer_id='0', bridge_id=item[0], bridge_table = 'account')}}">
-          Account Name: {{ item[1] }}
+  {% for item in range(0, run, 2) %}
+       <p>Account ID: {{ account[item][0][0] }}</p>
+        <p><a href="{{ url_for('customer', customer_id='0', bridge_id=account[item][0][0], bridge_table = 'account')}}">
+          Account Name: {{ account[item][0][1] }}
         </a>
           </p>
-       <p>Balance: ${{ item [2] }}</p>
-  {% endfor %}
-  {% for item in account_type %}
-        <p>Account Type ID: {{ item[0] }}</p>
-        <p>Account Type: {{ item[1] }}</p>
-       <p>Interest: {{ item[2] }}%</p>
+       <p>Balance: ${{ account[item][0][2] }}</p>
+       <p>Account Type ID: {{ account[item+1][0][0] }}</p>
+       <p>Account Type: {{ account[item+1][0][1] }}</p>
+       <p>Interest: {{ account[item+1][0][2] }}%</p>
+       <br>
   {% endfor %}
 </body>  
-

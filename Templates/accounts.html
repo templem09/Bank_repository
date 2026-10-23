@@ -33,7 +33,7 @@
  <tr>
    <td>{{ account[0] }}</td>
    <td>
-   <a href="{{ url_for('account_info', account_id=account[0])}}">
+   <a href="{{ url_for('account_info', account_id=account[0], customer_id='0', customer = 'invalid')}}">
      {{ account[1] }}
    </a>
    </td>

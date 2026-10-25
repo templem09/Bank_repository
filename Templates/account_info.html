@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
 </head>
 <div class="top-banner">
- 
     {% if list_length == '1' %}
       <h1>This is the information about the account {{ account[0][0][1] }}</h1>
       <h2>To find out information about the owner(s) of this account click on their name</h2>
@@ -17,7 +16,6 @@
       {%endfor%}
       </h1>
     {%endif%}
-  <h2>To find out information about the owner of this loan click on the loan purpose</h2>
    <a href="{{url_for('home')}}">
    <button class="top-corner-btn">Home</button>
    </a>

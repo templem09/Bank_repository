@@ -8,6 +8,7 @@
     {% if list_length == '1' %}
       <h1>This is the information about {{ customer[0][0][1] }}</h1>
       <h2>Click <a href="{{ url_for('account_info', customer_id=customer[0][0][0], account_id = '0', customer= 'valid')}}"><span>here</span></a> to see the accounts for {{ customer[0][0][1] }}.</h2>
+      <h2>Click <a href="{{ url_for('loan_info', customer_id=customer[0][0][0], loan_id='0', customer='valid')}}"><span>here</span></a> to see the loans for {{ customer[0][0][1] }}.</h2>
     {%else%}
       <h1>This is the information about {{ customer[0][0][1] }} & {{ customer[1][0][1] }}</h1>
     {%endif%}

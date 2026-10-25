@@ -148,17 +148,29 @@ def loans():
  results_display.append(loans)
  return render_template('loans.html', loans=results_display[0])
 
-@app.route('/loan_info.html/<int:loan_id>')
-@app.route('/customer.html/<int:loan_id>')
-def loan_info(loan_id):
+@app.route('/loan_info.html/<int:loan_id>/<int:customer_id>/<customer>')
+def loan_info(loan_id, customer_id, customer):
   db = sqlite3.connect("bank.db")
   cursor = db.cursor()
   loan_display= []
-  sql = (f"""SELECT *
-              from loans
-              WHERE loan_id = {loan_id}
-              """)
-  cursor.execute(sql)
-  details = cursor.fetchall()
-  loan_display.append(details)
-  return render_template('loan_info.html', loan=loan_display[0])
+  if customer == 'valid':
+    sql = (f"""SELECT loan_id
+            from person_loan
+            WHERE person_id = {customer_id}
+            """)
+    cursor.execute(sql)
+    loan_ids = cursor.fetchall()
+  else:
+    loan_ids = [(loan_id,)]
+  for i in loan_ids:
+    sql = (f"""SELECT *
+                from loans
+                WHERE loan_id = {i[0]}
+                """)
+    cursor.execute(sql)
+    details = cursor.fetchall()
+    loan_display.append(details)
+  list_length = str(len(loan_display))
+  run = str(len(loan_display))
+  run = int(run)
+  return render_template('loan_info.html', loan=loan_display, list_length=list_length, run=run)

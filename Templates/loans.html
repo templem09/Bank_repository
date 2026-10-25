@@ -33,7 +33,7 @@
  <tr>
    <td>{{ loan[0] }}</td>
    <td>
-   <a href="{{ url_for('loan_info', loan_id=loan[0])}}">
+   <a href="{{ url_for('loan_info', loan_id=loan[0], customer_id='0', customer='invalid')}}">
      {{ loan[1] }}
    </a>
    </td>

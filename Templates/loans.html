@@ -10,6 +10,7 @@
   <li><a href="{{url_for('details')}}">Details</a></li>
   <li><a href="{{url_for('accounts')}}">Accounts</a></li>
   <li><a href="{{url_for('loans')}}">Loans</a></li>
+  <li><a href="{{url_for('start')}}">Log Out</a></li>
   <spam><form action="{{ url_for('loans') }}" method="POST"><!-- This form takes the search input and sends it to the server for validation. -->
     <input type="text" placeholder="Search.." name="search">
     <button type="submit"><i class="fa fa-search"></i></button>

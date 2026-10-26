@@ -8,7 +8,7 @@ body{
    margin: 0;
    padding: 0;
 }
-.top-banner{
+.top-banner{   /* This is the top banner that is displayed on all of the pages and the heading texts. */
    background-color: rgb(46, 43, 128);
    height: 150px;
    width: 100%;

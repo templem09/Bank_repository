@@ -5,7 +5,7 @@
  <link rel="stylesheet" href="{{ url_for('static', filename='css/details.css') }}">
 </head>
 <div class="top-banner">
-{% if loans %}
+{% if loans %}<!-- This is the case where there are loans to display. -->
  <h1>These are all of the loans.</h1>
  <h2>To find out more about a loan click on the name.</h2>
  <a href="{{url_for('home')}}">
@@ -22,7 +22,7 @@
   </a>
 {%endif%}
 </div>
-<table border="0">
+<table border="0"> <!-- This table displays all of the loans. -->
        <thead>
            <tr>
                <th>ID</th>

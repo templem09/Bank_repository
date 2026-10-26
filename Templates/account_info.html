@@ -5,10 +5,10 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
 </head>
 <div class="top-banner">
-    {% if list_length == '1' %}
+    {% if list_length == '1' %}<!-- This is the case where there is only one account to display information for. -->
       <h1>This is the information about the account {{ account[0][0][1] }}</h1>
       <h2>To find out information about the owner(s) of this account click on their name</h2>
-    {% else %}
+    {% else %}<!-- This is the case where there are multiple accounts to display information for. -->
       <h1>This is the information about the accounts {{ account[0][0][1] }}
       {% for item in range(2, run, 2) %}
         |
@@ -30,7 +30,7 @@
   </a>
 </div>
 <body>
-  {% for item in range(0, run, 2) %}
+  {% for item in range(0, run, 2) %}<!-- This loop goes through all of the accounts in the list and displays their information. -->
        <p>Account ID: {{ account[item][0][0] }}</p>
         <p><a href="{{ url_for('customer', customer_id='0', bridge_id=account[item][0][0], bridge_table = 'account')}}">
           Account Name: {{ account[item][0][1] }}

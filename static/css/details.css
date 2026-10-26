@@ -9,7 +9,7 @@ h2{
     color: white;
     text-align: center;
 }
-.top-banner{
+.top-banner{    /* This is the top banner that is displayed on all of the pages and the heading texts. */
     background-color: rgb(46, 43, 128);
     height: 150px;
     width: 100%;
@@ -36,7 +36,7 @@ div{
     text-align: center;
 }
 
-.top-corner-btn {
+.top-corner-btn {   /* This is the home button that is displayed in the top right corner of the page. */
     position: fixed;
     top: 10px;   
     right: 10px; 

@@ -5,45 +5,52 @@ app.config['TEMPLATES_AUTO_RELOAD']= True
 invalid = 'valid'
 @app.route("/")
 def start():
-   return render_template('login.html')
+  """
+  This function is the starting point of the application. It returns the login page."""
+  return render_template('login.html')
 
 @app.route("/home.html")
 def home():
-   return render_template('home.html')
+  """
+  This function returns the home page."""
+  return render_template('home.html')
 
 @app.route("/", methods = ['GET','POST'])
 def login():
+ """ This function handles the login process. It checks the provided employee name and password against the database.
+ If the login is correct it returns the home page, otherwise it returns the login page saying username or password incorrect."""
  global invalid
  if request.method == 'POST':
-     employee_name = request.form.get('employee_name')
-     db = sqlite3.connect("bank.db")
-     cursor = db.cursor()
-     results_display= set()
-     try:
-         sql = (f"""SELECT employee_id
-                 from log_in
-                 WHERE employee = '{employee_name}'
-                 """)
-         cursor.execute(sql)
-         employee_id = cursor.fetchall()
-         results_display.add(employee_id[0][0])
-         password = request.form.get('password')
-         sql = (f"""SELECT employee_id
-                         from log_in
-                         WHERE password = '{password}'
-                         """)
-         cursor.execute(sql)
-         password = cursor.fetchall()
-         results_display.add(password[0][0])
-     except:
-         return render_template ('login.html', invalid = 'Username or password incorrect.')
-     if len(results_display) == 1:
-         return render_template ('home.html')
-     else:
-         return render_template ('login.html', invalid = 'Username or password incorrect.')
+    employee_name = request.form.get('employee_name')
+    db = sqlite3.connect("bank.db")
+    cursor = db.cursor()
+    results_display= set()
+    try:
+      sql = (f"""SELECT employee_id
+              from log_in
+              WHERE employee = '{employee_name}'
+              """)
+      cursor.execute(sql)
+      employee_id = cursor.fetchall()
+      results_display.add(employee_id[0][0])
+      password = request.form.get('password')
+      sql = (f"""SELECT employee_id
+                      from log_in
+                      WHERE password = '{password}'
+                      """)
+      cursor.execute(sql)
+      password = cursor.fetchall()
+      results_display.add(password[0][0])
+    except:
+      return render_template ('login.html', invalid = 'Username or password incorrect.')
+    if len(results_display) == 1:
+      return render_template ('home.html')
+    else:
+      return render_template ('login.html', invalid = 'Username or password incorrect.')
 
 @app.route('/details.html')
 def details():
+ """This function returns the details page with a list of all customers in the database."""
  db = sqlite3.connect("bank.db")
  cursor = db.cursor()
  results_display= []
@@ -57,6 +64,9 @@ def details():
 
 @app.route('/customer.html/<int:customer_id>/<int:bridge_id>/<bridge_table>')
 def customer(customer_id, bridge_id, bridge_table):
+  """This function returns the customer page with the details of a specific customer. 
+  If it is coming from the details page it will simplt display the details of the customer clicked on.
+  If it is coming from the account or loan page it will go thtough the bridge table to find the customer(s) associated with the account or loan clicked on and display their details."""
   db = sqlite3.connect("bank.db")
   cursor = db.cursor()
   if bridge_table == 'account' or bridge_table == 'loan':
@@ -84,6 +94,7 @@ def customer(customer_id, bridge_id, bridge_table):
 
 @app.route('/accounts.html')
 def accounts():
+ """This function returns the accounts page with a list of all accounts in the database."""
  db = sqlite3.connect("bank.db")
  cursor = db.cursor()
  results_display= []
@@ -97,6 +108,9 @@ def accounts():
 
 @app.route('/account_info.html/<int:account_id>/<int:customer_id>/<customer>')
 def account_info(account_id, customer_id, customer):
+  """This function returns the account information page with the details of a specific account.
+  If it is coming from the accounts page it will simplt display the details of the account clicked on.
+  If it is coming from the customer page it will go thtough the bridge table to find the account(s) associated with the customer clicked on and display their details."""
   db = sqlite3.connect("bank.db")
   cursor = db.cursor()
   account_display= []
@@ -137,6 +151,7 @@ def account_info(account_id, customer_id, customer):
 
 @app.route('/loans.html')
 def loans():
+ """This function returns the loans page with a list of all loans in the database."""
  db = sqlite3.connect("bank.db")
  cursor = db.cursor()
  results_display= []
@@ -150,6 +165,9 @@ def loans():
 
 @app.route('/loan_info.html/<int:loan_id>/<int:customer_id>/<customer>')
 def loan_info(loan_id, customer_id, customer):
+  """This function returns the loan information page with the details of a specific loan.
+  If it is coming from the loans page it will simplt display the details of the loan clicked on.
+  If it is coming from the customer page it will go thtough the bridge table to find the loan(s) associated with the customer clicked on and display their details."""
   db = sqlite3.connect("bank.db")
   cursor = db.cursor()
   loan_display= []

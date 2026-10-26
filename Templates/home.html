@@ -5,18 +5,18 @@
  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 </head>
 <div class="top-banner">
-<body>
+<body><!-- This is the home page of the bank application. -->
  <br>
  <h1>~ Bank ~</h1>
 </body>
 <a href="{{url_for('details')}}">
- <div><button type="button">Details</button></div>
+ <div><button type="button">Details</button></div><!-- This button takes the user to the details page. -->
 </a>
 <a href="{{url_for('accounts')}}">
-<div><button type="button">Accounts</button></div>
+<div><button type="button">Accounts</button></div><!-- This button takes the user to the accounts page. -->
 </a>
 <a href="{{url_for('loans')}}">
-<div><button type="button">Loans</button></div>
+<div><button type="button">Loans</button></div><!-- This button takes the user to the loans page. -->
 </a>
 </html>
 </div>

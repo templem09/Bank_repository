@@ -48,19 +48,30 @@ def login():
     else:
       return render_template ('login.html', invalid = 'Username or password incorrect.')
 
-@app.route('/details.html')
+@app.route('/details.html', methods = ['GET','POST'])
 def details():
  """This function returns the details page with a list of all customers in the database."""
  db = sqlite3.connect("bank.db")
  cursor = db.cursor()
  results_display= []
- sql = (f"""SELECT person_id, name, birthday
-         from details
-         """)
- cursor.execute(sql)
- details = cursor.fetchall()
- results_display.append(details)
- return render_template('details.html', customers=results_display[0])
+ if request.method == 'POST':
+    search = request.form.get('search')
+    sql = (f"""SELECT person_id, name, birthday
+            from details
+            WHERE name LIKE '%{search}%'
+            """)
+    cursor.execute(sql)
+    details = cursor.fetchall()
+    results_display.append(details)
+    return render_template('details.html', customers=results_display[0])
+ else:
+    sql = (f"""SELECT person_id, name, birthday
+            from details
+            """)
+    cursor.execute(sql)
+    details = cursor.fetchall()
+    results_display.append(details)
+    return render_template('details.html', customers=results_display[0])
 
 @app.route('/customer.html/<int:customer_id>/<int:bridge_id>/<bridge_table>')
 def customer(customer_id, bridge_id, bridge_table):
@@ -92,19 +103,30 @@ def customer(customer_id, bridge_id, bridge_table):
   list_length = str(len(results_display))
   return render_template('customer.html', customer=results_display, list_length=list_length)
 
-@app.route('/accounts.html')
+@app.route('/accounts.html', methods = ['GET','POST'])
 def accounts():
  """This function returns the accounts page with a list of all accounts in the database."""
  db = sqlite3.connect("bank.db")
  cursor = db.cursor()
  results_display= []
- sql = (f"""SELECT account_id, account_name
-         from account
-         """)
- cursor.execute(sql)
- accounts = cursor.fetchall()
- results_display.append(accounts)
- return render_template('accounts.html', accounts=results_display[0])
+ if request.method == 'POST':
+    search = request.form.get('search')
+    sql = (f"""SELECT account_id, account_name
+            from account
+            WHERE account_name LIKE '%{search}%'
+            """)
+    cursor.execute(sql)
+    accounts = cursor.fetchall()
+    results_display.append(accounts)
+    return render_template('accounts.html', accounts=results_display[0])
+ else:
+    sql = (f"""SELECT account_id, account_name
+            from account
+            """)
+    cursor.execute(sql)
+    accounts = cursor.fetchall()
+    results_display.append(accounts)
+    return render_template('accounts.html', accounts=results_display[0])
 
 @app.route('/account_info.html/<int:account_id>/<int:customer_id>/<customer>')
 def account_info(account_id, customer_id, customer):
@@ -149,19 +171,30 @@ def account_info(account_id, customer_id, customer):
   run = int(run)
   return render_template('account_info.html', account=account_display, list_length=list_length, run = run)
 
-@app.route('/loans.html')
+@app.route('/loans.html', methods = ['GET','POST'])
 def loans():
  """This function returns the loans page with a list of all loans in the database."""
  db = sqlite3.connect("bank.db")
  cursor = db.cursor()
  results_display= []
- sql = (f"""SELECT loan_id, loan_reason
-         from loans
-         """)
- cursor.execute(sql)
- loans = cursor.fetchall()
- results_display.append(loans)
- return render_template('loans.html', loans=results_display[0])
+ if request.method == 'POST':
+    search = request.form.get('search')
+    sql = (f"""SELECT loan_id, loan_reason
+            from loans
+            WHERE loan_reason LIKE '%{search}%'
+            """)
+    cursor.execute(sql)
+    loans = cursor.fetchall()
+    results_display.append(loans)
+    return render_template('loans.html', loans=results_display[0])
+ else:
+  sql = (f"""SELECT loan_id, loan_reason
+          from loans
+          """)
+  cursor.execute(sql)
+  loans = cursor.fetchall()
+  results_display.append(loans)
+  return render_template('loans.html', loans=results_display[0])
 
 @app.route('/loan_info.html/<int:loan_id>/<int:customer_id>/<customer>')
 def loan_info(loan_id, customer_id, customer):

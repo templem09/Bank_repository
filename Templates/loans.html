@@ -2,25 +2,28 @@
 <html lang="en">
 <head>
  <meta charset="UTF-8">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
  <link rel="stylesheet" href="{{ url_for('static', filename='css/details.css') }}">
 </head>
-<div class="top-banner">
-{% if loans %}<!-- This is the case where there are loans to display. -->
- <h1>These are all of the loans.</h1>
- <h2>To find out more about a loan click on the name.</h2>
- <a href="{{url_for('home')}}">
- <button class="top-corner-btn">Home</button>
- </a>
- <a href="{{url_for('details')}}">
- <div><button type="button">Details</button></div>
- </a>
- <a href="{{url_for('accounts')}}">
- <div><button type="button">Accounts</button></div>
- </a>
- <a href="{{url_for('loans')}}">
-  <div><button type="button">Loans</button></div>
-  </a>
-{%endif%}
+<div class="top-banner"><!-- This is the top banner of the loans page. -->
+<h1>These are all of the loans.</h1>
+<h2>To find out more about a loan click on the name.</h2>
+<a href="{{url_for('home')}}">
+<button class="top-corner-btn">Home</button>
+</a>
+<a href="{{url_for('details')}}">
+<div><button type="button">Details</button></div>
+</a>
+<a href="{{url_for('accounts')}}">
+<div><button type="button">Accounts</button></div>
+</a>
+<a href="{{url_for('loans')}}">
+<div><button type="button">Loans</button></div>
+</a>
+<form action="{{ url_for('loans') }}" method="POST"><!-- This form takes the search input and sends it to the server for validation. -->
+    <input type="text" placeholder="Search.." name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
 </div>
 <table border="0"> <!-- This table displays all of the loans. -->
        <thead>

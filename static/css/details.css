@@ -25,6 +25,7 @@ table {
 th, td {
     padding: 15px 30px;
     text-align: left;
+    font-size : 20px;
 }
 
 div{
@@ -42,3 +43,14 @@ div{
     right: 10px; 
     z-index: 1000; 
     }
+
+a{
+    color:black;
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+a:hover{  /* This is the hover effect for the links. */
+    font-weight: bolder;
+}

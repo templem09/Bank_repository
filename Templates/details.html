@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/details.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <link rel="stylesheet" href="{{ url_for('static', filename='css/details.css') }}">
 </head>
-<div class="top-banner">
-{% if customers %}<!-- This is the case where there are customers to display. -->
+
+<div class="top-banner"><!-- This is the top banner of the details page. -->
   <h1>These are all of the customers.</h1>
   <h2>To find out more about a customer click on their name.</h2>
   <a href="{{url_for('home')}}">
@@ -20,7 +20,10 @@
   <a href="{{url_for('loans')}}">
   <div><button type="button">Loans</button></div>
   </a>
-{%endif%}
+  <form action="{{ url_for('details') }}" method="POST"><!-- This form takes the search input and sends it to the server for validation. -->
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
 </div>
 <table border="0"><!-- This table displays all of the customers. -->
         <thead>

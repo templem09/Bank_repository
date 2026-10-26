@@ -11,7 +11,7 @@ h2{
 }
 .top-banner{    /* This is the top banner that is displayed on all of the pages and the heading texts. */
     background-color: rgb(46, 43, 128);
-    height: 150px;
+    height: 120px;
     width: 100%;
 }
 body{
@@ -37,13 +37,6 @@ div{
     text-align: center;
 }
 
-.top-corner-btn {   /* This is the home button that is displayed in the top right corner of the page. */
-    position: fixed;
-    top: 10px;   
-    right: 10px; 
-    z-index: 1000; 
-    }
-
 a{
     color:black;
     text-align: center;
@@ -53,4 +46,31 @@ a{
 
 a:hover{  /* This is the hover effect for the links. */
     font-weight: bolder;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(46, 43, 128);
+}
+
+ul li {
+  float: left;
+}
+ul spam{
+  float: right;
+  padding: 14px 16px;
+}
+ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  background-color: white;
+  color: rgb(46, 43, 128);
 }

@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
 </head>
+<ul>
+<li><a href="{{url_for('home')}}">Home</a></li>
+  <li><a href="{{url_for('details')}}">Details</a></li>
+  <li><a href="{{url_for('accounts')}}">Accounts</a></li>
+  <li><a href="{{url_for('loans')}}">Loans</a></li>
+</ul>
 <div class="top-banner">
    {% if list_length == '1' %}<!-- This is the case where there is only one loan to display information for. -->
       <h1>This is the information about the {{ loan[0][0][1] }}</h1>
@@ -16,18 +22,6 @@
       {%endfor%}
       </h1>
     {%endif%}
-   <a href="{{url_for('home')}}">
-   <button class="top-corner-btn">Home</button>
-   </a>
-   <a href="{{url_for('details')}}">
-  <div><button type="button">Details</button></div>
-  </a>
-  <a href="{{url_for('accounts')}}">
-  <div><button type="button">Accounts</button></div>
-  </a>
-  <a href="{{url_for('loans')}}">
-  <div><button type="button">Loans</button></div>
-  </a>
 </div>
 <body>
   {% for item in range(run) %}<!-- This loop goes through all of the loans in the list and displays their information. -->

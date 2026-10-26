@@ -4,20 +4,17 @@
  <meta charset="UTF-8">
  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 </head>
+<ul>
+  <li><a href="{{url_for('home')}}">Home</a></li>
+  <li><a href="{{url_for('details')}}">Details</a></li>
+  <li><a href="{{url_for('accounts')}}">Accounts</a></li>
+  <li><a href="{{url_for('loans')}}">Loans</a></li>
+</ul>
 <div class="top-banner">
 <body><!-- This is the home page of the bank application. -->
  <br>
  <h1>~ Bank ~</h1>
 </body>
-<a href="{{url_for('details')}}">
- <div><button type="button">Details</button></div><!-- This button takes the user to the details page. -->
-</a>
-<a href="{{url_for('accounts')}}">
-<div><button type="button">Accounts</button></div><!-- This button takes the user to the accounts page. -->
-</a>
-<a href="{{url_for('loans')}}">
-<div><button type="button">Loans</button></div><!-- This button takes the user to the loans page. -->
-</a>
 </div>
 <body>
   <p><span>Welcome to the bank application.</span></p>

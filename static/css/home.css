@@ -10,8 +10,12 @@ body{
 }
 .top-banner{   /* This is the top banner that is displayed on all of the pages and the heading texts. */
    background-color: rgb(46, 43, 128);
-   height: 150px;
+   height: 120px;
    width: 100%;
+}
+
+a{
+   font-size: 20px;
 }
 
 div{
@@ -34,4 +38,32 @@ span{
    color: rgb(46, 43, 128);
    text-align: center;
    font-size: 30px;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(46, 43, 128);
+}
+
+ul li {
+  float: left;
+}
+ul spam{
+  float: right;
+  padding: 14px 16px;
+}
+ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  background-color: white;
+  color: rgb(46, 43, 128);
 }

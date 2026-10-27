@@ -23,25 +23,25 @@
 <table border="0"><!-- This table displays all of the customers. -->
         <thead>
             <tr>
-                <th>ID</th>
-                <th><div class = "dropdown">
-                  <button class="dropbtn">Customer Name
-                    <i class="fa fa-caret-down"></i>
-                  </button>
-                  <div class="dropdown-content">
-                    <a href = "{{url_for('details', sort = 'name', by ='ASC')}}">Order by: Alphabetical (A-Z)</a>
-                    <a href = "{{url_for('details', sort='name', by ='DESC')}}">Order by: Alphabetical (Z-A)</a>
-                  </div>
-                </div></th>
-                <th><div class = "dropdown">
-                  <button class="dropbtn">Birthday
-                    <i class="fa fa-caret-down"></i>
-                  </button>
-                  <div class="dropdown-content">
-                    <a href = "{{url_for('details', sort = 'age', by ='ASC')}}">Order by: Age (Old-Young)</a>
-                    <a href = "{{url_for('details', sort='age', by ='DESC')}}">Order by: Age (Young-Old)</a>
-                  </div>
-                </div></th>
+              <th>ID</th>
+              <th><div class = "dropdown"><!--This creates the order by dropdowns.-->
+                <button class="dropbtn">Customer Name
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                  <a href = "{{url_for('details', sort = 'name', by ='ASC')}}">Order by: Alphabetical (A-Z)</a>
+                  <a href = "{{url_for('details', sort='name', by ='DESC')}}">Order by: Alphabetical (Z-A)</a>
+                </div>
+              </div></th>
+              <th><div class = "dropdown">
+                <button class="dropbtn">Birthday
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                  <a href = "{{url_for('details', sort = 'age', by ='ASC')}}">Order by: Age (Old-Young)</a>
+                  <a href = "{{url_for('details', sort='age', by ='DESC')}}">Order by: Age (Young-Old)</a>
+                </div>
+              </div></th>
             </tr>
         </thead>
 {% for customer in customers %}

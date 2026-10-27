@@ -73,7 +73,6 @@ def details(sort, by):
       cursor.execute(sql)
       details = cursor.fetchall()
       results_display.append(details)
-      print(results_display[0])
       return render_template('details.html', customers=results_display[0])
     elif sort == 'age':
       sql = (f"""SELECT person_id, name, birthday
@@ -83,7 +82,6 @@ def details(sort, by):
       cursor.execute(sql)
       details = cursor.fetchall()
       results_display.append(details)
-      print(results_display[0])
       return render_template('details.html', customers=results_display[0])
     else:
       sql = (f"""SELECT person_id, name, birthday

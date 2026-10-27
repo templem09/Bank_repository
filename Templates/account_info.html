@@ -12,16 +12,18 @@
   <li><a href="{{url_for('start')}}">Log Out</a></li>
 </ul>
 <div class="top-banner">
-    {% if list_length == '1' %}<!-- This is the case where there is only one account to display information for. -->
-      <h1>This is the information about the account {{ account[0][0][1] }}</h1>
-      <h2>To find out information about the owner(s) of this account click on their name</h2>
+    {% if list_length == '2' %}<!-- This is the case where there is only one account to display information for. -->
+      <h1>This is the information about the account {{ account[0][0][1] }}.</h1>
+      <h2>To find out information about the owner(s) of this account click on their name.</h2>
     {% else %}<!-- This is the case where there are multiple accounts to display information for. -->
       <h1>This is the information about the accounts {{ account[0][0][1] }}
       {% for item in range(2, run, 2) %}
         |
         {{ account[item][0][1] }}
       {%endfor%}
+      .
       </h1>
+      <h2>To find out information about the owner(s) of these account click on their name.</h2>
     {%endif%}
 </div>
 <body>

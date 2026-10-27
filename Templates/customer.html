@@ -6,9 +6,9 @@
 </head>
 <ul>
   <li><a href="{{url_for('home')}}">Home</a></li>
-  <li><a href="{{url_for('details')}}">Details</a></li>
-  <li><a href="{{url_for('accounts')}}">Accounts</a></li>
-  <li><a href="{{url_for('loans')}}">Loans</a></li>
+  <li><a href="{{url_for('details', sort = 'N-A', by='N-A')}}">Details</a></li>
+  <li><a href="{{url_for('accounts', by='N-A')}}">Accounts</a></li>
+  <li><a href="{{url_for('loans', by='N-A')}}">Loans</a></li>
   <li><a href="{{url_for('start')}}">Log Out</a></li>
 </ul>
 <div class="top-banner">

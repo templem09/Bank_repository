@@ -58,12 +58,14 @@ ul{
 ul li {
   float: left;
 }
+
 ul spam{
   float: right;
   padding: 14px 16px;
 }
 ul li a {
   display: block;
+  font-size: 20px;
   color: white;
   text-align: center;
   padding: 14px 16px;
@@ -74,3 +76,44 @@ ul li a:hover {
   background-color: white;
   color: rgb(46, 43, 128);
 }
+
+.dropbtn {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: white;
+  color: black;
+  padding: 0px;
+  font-size: 16px;
+  border: none;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: left;
+}
+
+.dropdown {
+  position: left;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  background-color: white;
+  color: rgb(46, 43, 128);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover{
+    background-color: rgb(46, 43, 128);
+    color: white;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+

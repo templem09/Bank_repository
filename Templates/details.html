@@ -7,11 +7,11 @@
 </head>
 <ul>
   <li><a href="{{url_for('home')}}">Home</a></li>
-  <li><a href="{{url_for('details')}}">Details</a></li>
-  <li><a href="{{url_for('accounts')}}">Accounts</a></li>
-  <li><a href="{{url_for('loans')}}">Loans</a></li>
+  <li><a href="{{url_for('details', sort = 'N-A', by='N-A')}}">Details</a></li>
+  <li><a href="{{url_for('accounts', by='N-A')}}">Accounts</a></li>
+  <li><a href="{{url_for('loans', by='N-A')}}">Loans</a></li>
   <li><a href="{{url_for('start')}}">Log Out</a></li>
-  <spam><form action="{{ url_for('details') }}" method="POST"><!-- This form takes the search input and sends it to the server for validation. -->
+  <spam><form action="{{ url_for('details', sort = 'N-A', by='N-A') }}" method="POST"><!-- This form takes the search input and sends it to the server for validation. -->
       <input type="text" placeholder="Search.." name="search">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form></spam>
@@ -24,8 +24,24 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Customer Name</th>
-                <th>Birthday</th>
+                <th><div class = "dropdown">
+                  <button class="dropbtn">Customer Name
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href = "{{url_for('details', sort = 'name', by ='ASC')}}">Order by: Alphabetical (A-Z)</a>
+                    <a href = "{{url_for('details', sort='name', by ='DESC')}}">Order by: Alphabetical (Z-A)</a>
+                  </div>
+                </div></th>
+                <th><div class = "dropdown">
+                  <button class="dropbtn">Birthday
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href = "{{url_for('details', sort = 'age', by ='ASC')}}">Order by: Age (Old-Young)</a>
+                    <a href = "{{url_for('details', sort='age', by ='DESC')}}">Order by: Age (Young-Old)</a>
+                  </div>
+                </div></th>
             </tr>
         </thead>
 {% for customer in customers %}
